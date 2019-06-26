@@ -27,9 +27,9 @@ done
 
 # Build base dependencies, allow caching
 if [ $OUTPUT_SHA ]; then
-    IMAGE_SHA=$(docker build $NO_CACHE -q -t ray-project/base-deps docker/base-deps)
+    IMAGE_SHA=$(docker build $NO_CACHE -q -t ray-project/base-tensorflow-gpu docker/base-tensorflow-gpu)
 else
-    docker build $NO_CACHE -t ray-project/base-deps docker/base-deps
+    docker build $NO_CACHE -t ray-project/base-tensorflow-gpu docker/base-tensorflow-gpu
 fi
 
 # Build the current Ray source
@@ -38,7 +38,8 @@ git archive -o ./docker/deploy/ray.tar "$(git rev-parse HEAD)"
 if [ $OUTPUT_SHA ]; then
     IMAGE_SHA=$(docker build --no-cache -q -t ray-project/deploy docker/deploy)
 else
-    docker build --no-cache -t ray-project/deploy docker/deploy
+    # docker build --no-cache -t ray-project/deploy docker/deploy
+    docker build -t ray-project/deploy docker/deploy
 fi
 rm ./docker/deploy/ray.tar ./docker/deploy/git-rev
 
@@ -47,10 +48,15 @@ if [ ! $SKIP_EXAMPLES ]; then
     if [ $OUTPUT_SHA ]; then
         IMAGE_SHA=$(docker build $NO_CACHE -q -t ray-project/examples docker/examples)
     else
-        docker build --no-cache -t ray-project/examples docker/examples
+        # docker build --no-cache -t ray-project/examples docker/examples
+        docker build -t ray-project/examples docker/examples
     fi
 fi
 
 if [ $OUTPUT_SHA ]; then
     echo "$IMAGE_SHA" | sed 's/sha256://'
 fi
+
+nvidia-docker run --name RLlib --shm-size=2G -it -p 8888:8888 -p 6006:6006 \
+    --mount type=bind,src=/home/chrishsu/repositories/ray,dst=/tf \
+    ray-project/examples

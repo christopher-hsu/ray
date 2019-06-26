@@ -10,9 +10,13 @@ RUN conda remove -y --force wrapt
 RUN pip install gym[atari] opencv-python-headless tensorflow lz4 keras pytest-timeout smart_open
 RUN pip install -U h5py  # Mutes FutureWarnings
 RUN pip install --upgrade bayesian-optimization
-RUN pip install --upgrade git+git://github.com/hyperopt/hyperopt.git
+# RUN pip install --upgrade git+git://github.com/hyperopt/hyperopt.git
+RUN pip install --upgrade hyperopt
 RUN pip install --upgrade sigopt
 RUN pip install --upgrade nevergrad
 RUN pip install --upgrade scikit-optimize
 RUN pip install -U pytest-remotedata>=0.3.1
 RUN conda install pytorch-cpu torchvision-cpu -c pytorch
+RUN pip install ray[rllib]
+
+WORKDIR /ray/python/ray/rllib

@@ -1,7 +1,7 @@
 # The deploy Docker image build a self-contained Ray instance suitable
 # for end users.
 
-FROM ray-project/base-deps
+FROM ray-project/base-tensorflow-gpu
 ADD ray.tar /ray
 ADD git-rev /ray/git-rev
 RUN /ray/ci/travis/install-bazel.sh
