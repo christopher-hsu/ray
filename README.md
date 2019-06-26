@@ -1,6 +1,6 @@
 forked from https://github.com/ray-project/ray
 
-# To build docker image and RLlib container
+### To build docker image and RLlib container
 Will build ray on top of tensorflow 1.14.0-gpu-jupyter image.
 ```
 ~/ray$ ./build-docker.sh
@@ -11,14 +11,14 @@ Image is now built and RLlib container is now running. You can now open a jupyte
 localhost:8888 ...
 ```
 
-# To use terminal
+### To use terminal
 ```
 $ docker exec -it RLlib bash
 ```
 
 Drops you into the rllib directory.
 
-# To close container
+### To close container
 ```
 $ docker ps -a
 $ docker container stop RLlib
