@@ -1,3 +1,8 @@
+### Bayesian Q-learning with Assumed Density Filtering (https://arxiv.org/abs/1712.03333)
+Author: Heejin Chloe Jeong (heejinj@seas.upenn.edu)
+Affiliation: University of Pennsylvania, Philadelphia, PA
+
+
 RLlib: Scalable Reinforcement Learning
 ======================================
 
