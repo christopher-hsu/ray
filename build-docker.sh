@@ -57,6 +57,7 @@ if [ $OUTPUT_SHA ]; then
     echo "$IMAGE_SHA" | sed 's/sha256://'
 fi
 
-nvidia-docker run --name RLlib --shm-size=2G -it -p 8888:8888 -p 6006:6006 \
+nvidia-docker run --name RLlib --shm-size=2G -it --rm -p 8888:8888 -p 6006:6006 \
     --mount type=bind,src=/home/chrishsu/repositories/ray,dst=/tf \
+    -w /tf/python/ray/rllib \
     ray-project/examples
