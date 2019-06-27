@@ -1,9 +1,10 @@
 ### Bayesian Q-learning with Assumed Density Filtering (https://arxiv.org/abs/1712.03333)
+======================================
 Author: Heejin Chloe Jeong (heejinj@seas.upenn.edu)
 Affiliation: University of Pennsylvania, Philadelphia, PA
 
 
-RLlib: Scalable Reinforcement Learning
+### RLlib: Scalable Reinforcement Learning
 ======================================
 
 RLlib is an open-source library for reinforcement learning that offers both high scalability and a unified API for a variety of applications.
