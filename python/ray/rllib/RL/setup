@@ -1,0 +1,2 @@
+PYTHONPATH="${PYTHONPATH}:$PWD/.:$PWD/BRL:$PWD/DeepADFQ:$PWD/../infoplanner/lib"
+export PYTHONPATH
