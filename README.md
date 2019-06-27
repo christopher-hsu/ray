@@ -1,5 +1,7 @@
 forked from https://github.com/ray-project/ray
 
+merged with https://github.com/coco66/RL/tree/tmp0408
+
 ### To build docker image and RLlib container
 Will build ray on top of tensorflow 1.14.0-gpu-jupyter image.
 ```
