@@ -1,0 +1,26 @@
+cd RL/BRL/DRL/keras
+source activate tensorflow_p27
+export PYTHONPATH=/home/ubuntu/RL:$PYTHONPATH
+export PYTHONPATH=/home/ubuntu/keras-rl:$PYTHONPATH
+python keras_run_atari.py --nb_max_start_steps 100 --device /device:GPU:
+
+
+taskset -c 52,53,54,55 cpulimit -l 90 -- python keras_run_atari.py --nb_max_start_steps 100 --device /device:GPU:6 --double_dqn 1 --dueling 1 --log_dir ../../result/DuelDQN --env_name Seaquest-v0
+
+
+# To generate Breakout plots
+import matplotlib.pyplot as plt
+import pickle
+alg_names = ['adfq','dqn','ddqn','duel']
+colors = ['r','g','b','k']
+results = []
+results.append(pickle.load(open("ADFQ/01262207/adfq_epoch_test.pkl","r")))
+results.append(pickle.load(open("DQN/01262200/dqn_epoch_test.pkl","r")))
+results.append(pickle.load(open("DDQN/01262203/dqn_epoch_test.pkl","r")))
+results.append(pickle.load(open("DuelDQN/01262204/dqn_epoch_test.pkl","r")))
+
+for i in range(4):
+	plt.plot([x[1] for x in results[i]], color=colors[i])
+
+plt.legend(alg_names)
+plt.show()

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "export paths..."
+export PYTHONPATH=/Users/heejin/Desktop/RL_dev:$PYTHONPATH
+export PYTHONPATH=/Users/heejin/Desktop/Develop/keras-rl:$PYTHONPATH

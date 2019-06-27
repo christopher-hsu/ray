@@ -14,6 +14,10 @@
 /src/ray/raylet/format/*_generated.h
 /java/runtime/src/main/java/org/ray/runtime/generated/*
 
+
+/python/ray/rllib/RL/TargetTracking*
+/python/ray/rllib/TargetTracking*
+
 # Modin source files
 /python/ray/modin
 

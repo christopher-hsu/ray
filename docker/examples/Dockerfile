@@ -18,5 +18,7 @@ RUN pip install --upgrade scikit-optimize
 RUN pip install -U pytest-remotedata>=0.3.1
 RUN conda install pytorch-cpu torchvision-cpu -c pytorch
 RUN pip install ray[rllib]
+RUN apt-get install -y python-pyglet python3-opengl zlib1g-dev libjpeg-dev patchelf \
+        cmake swig libboost-all-dev libsdl2-dev libosmesa6-dev xvfb ffmpeg
 
 WORKDIR /ray/python/ray/rllib
