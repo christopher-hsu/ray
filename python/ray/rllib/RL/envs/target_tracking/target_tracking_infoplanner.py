@@ -11,7 +11,7 @@ from envs.target_tracking.agent_models import AgentSE2, AgentDoubleInt2D, Agent_
 import envs.env_utils as util 
 from envs.target_tracking.belief_tracker import KFbelief
 
-import pyInfoGathering as IGL
+# import pyInfoGathering as IGL
 from envs.target_tracking.infoplanner_binding import Configure, Policy
 from envs.target_tracking.metadata import *
 

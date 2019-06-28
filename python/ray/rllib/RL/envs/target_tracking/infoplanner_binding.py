@@ -1,7 +1,7 @@
 """
 Originally written by Brent. Modified a little bit for ADFQ git repo
 """
-import pyInfoGathering as IGL
+# import pyInfoGathering as IGL
 import numpy as np
 # Example target locations
 '''

@@ -15,7 +15,7 @@ SEDynamicsVel : update dynamics function for contant linear and angular velociti
 import numpy as np
 from envs.target_tracking.metadata import *
 import envs.env_utils as util
-import pyInfoGathering as IGL
+# import pyInfoGathering as IGL
 
 class Agent(object):
     def __init__(self, dim, sampling_period, limit, collision_func, margin=MARGIN):
