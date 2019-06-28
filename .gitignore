@@ -16,7 +16,7 @@
 
 
 /python/ray/rllib/RL/TargetTracking*
-/python/ray/rllib/TargetTracking*
+/python/ray/rllib/TrainDirectories
 
 # Modin source files
 /python/ray/modin
