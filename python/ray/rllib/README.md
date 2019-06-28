@@ -31,3 +31,21 @@ If you've found RLlib useful for your research, you can cite the [paper](https:/
     Year = {2018}
 }
 ```
+### To start image and container
+```
+$./build-docker.sh
+```
+
+### To use terminal
+```
+$ docker exec -it RLlib bash
+```
+
+Drops you into the rllib directory.
+
+### To close container
+```
+$ docker ps -a
+$ docker container stop RLlib
+$ docker container rm RLlib
+```
