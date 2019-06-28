@@ -39,7 +39,8 @@ git checkout dev
 cd DeepADFQ && mkdir results
 cd results && mkdir ADFQ-eg ADFQ-ts DQN DDQN
 ```
-Set path
+Check path, Set path
 ```
+echo $PYTHONPATH
 source setup
 ```
