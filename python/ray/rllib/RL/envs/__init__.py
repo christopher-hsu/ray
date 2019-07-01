@@ -18,7 +18,7 @@ def make(env_name, render=False, figID=0, record=False,
             from gym import wrappers
             import envs.target_tracking.target_tracking as ttenv
             from envs.target_tracking.target_tracking_advanced import TargetTrackingEnvRNN
-            from envs.target_tracking.target_tracking_infoplanner import TargetTrackingInfoPlanner1, TargetTrackingInfoPlanner2
+            # from envs.target_tracking.target_tracking_infoplanner import TargetTrackingInfoPlanner1, TargetTrackingInfoPlanner2
             from envs.target_tracking import display_wrapper 
             if T_steps is None:
                 if num_targets > 1:

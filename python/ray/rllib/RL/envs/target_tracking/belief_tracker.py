@@ -8,7 +8,7 @@ import envs.env_utils as util
 from numpy import linalg as LA
 import pdb
 
-# from filterpy.kalman import JulierSigmaPoints, UnscentedKalmanFilter, ExtendedKalmanFilter
+from filterpy.kalman import JulierSigmaPoints, UnscentedKalmanFilter, ExtendedKalmanFilter
 
 class KFbelief(object):
     """
