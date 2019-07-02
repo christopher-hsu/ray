@@ -14,7 +14,7 @@ from ray.rllib.env.multi_agent_env import MultiAgentEnv
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--stop", type=int, default=50000)
-parser.add_argument("--run", type=str, default="PG")
+parser.add_argument("--run", type=str, default="QMIX")
 
 
 class TwoStepGame(MultiAgentEnv):
