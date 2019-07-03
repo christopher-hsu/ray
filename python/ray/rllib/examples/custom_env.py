@@ -68,7 +68,7 @@ if __name__ == "__main__":
     ray.init()
     ModelCatalog.register_custom_model("my_model", CustomModel)
     tune.run(
-        "PPO",
+        "DQN",
         stop={
             "timesteps_total": 10000,
         },

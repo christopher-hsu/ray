@@ -9,11 +9,11 @@ import gym
 def make(env_name, render=False, figID=0, record=False, 
                     ros=False, dirname='', map_name="empty", is_training=True, 
                     num_targets=1, T_steps=None, im_size=None):
-    try:
+    if False:
         env = gym.make(env_name)
         if record:
             env = Monitor(env, directory=args.log_dir)
-    except:
+    else:
         if 'Target' in env_name:
             from gym import wrappers
             import envs.target_tracking.target_tracking as ttenv
@@ -46,7 +46,7 @@ def make(env_name, render=False, figID=0, record=False,
                 env0 = TargetTrackingInfoPlanner2(map_name=map_name, is_training=is_training, num_targets=num_targets)
             else:
                 raise ValueError('no such environments')
-
+                   
             env = wrappers.TimeLimit(env0, max_episode_steps=T_steps)
             if ros:
                 from envs.ros_wrapper import Ros

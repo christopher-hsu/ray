@@ -34,10 +34,10 @@ from envs.target_tracking.belief_tracker import KFbelief, UKFbelief
 
 import os, copy, pdb
 from envs.target_tracking.metadata import *
-
+from envs.target_tracking.metadata import TARGET_INIT_COV
 
 class TargetTrackingEnv0(gym.Env):
-    def __init__(self, target_init_cov=0.01, q_true = 0.01, q = 0.01, 
+    def __init__(self, target_init_cov=TARGET_INIT_COV, q_true = 0.01, q = 0.01, 
                 num_targets=1, map_name='empty', is_training=True, known_noise=True):
         gym.Env.__init__(self)
         self.seed()
@@ -72,7 +72,7 @@ class TargetTrackingEnv0(gym.Env):
 
         self.agent_init_pos =  np.array([self.MAP.origin[0], self.MAP.origin[1], 0.0])
         self.target_init_pos = np.array(self.MAP.origin)
-        self.target_init_cov = 0.001
+        self.target_init_cov = TARGET_INIT_COV
         self.target_noise_cov = self.q * self.sampling_period**3/3*np.eye(self.target_dim)
         if known_noise:
             self.target_true_noise_sd = self.target_noise_cov
@@ -205,10 +205,13 @@ if __name__ == "__main__":
     # register_env("corridor", lambda config: SimpleCorridor(config))
     ray.init()
     ModelCatalog.register_custom_model("my_model", CustomModel)
+    register_env(
+        "TargetTrackingEnv0", lambda config: TwoStepGame(config).with_agent_groups(
+            grouping, obs_space=obs_space, act_space=act_space))
     tune.run(
         "DQN",
         stop={
-            "timesteps_total": 50000,
+            "timesteps_total": 10000,
         },
         config={
             "env": TargetTrackingEnv0,  # or "corridor" if registered above
@@ -217,6 +220,8 @@ if __name__ == "__main__":
             },
             "lr": grid_search([1e-2, 1e-3, 1e-4]),  # try different lrs
             "num_workers": 1,  # parallelism
+            "timesteps_per_iteration": 1000,
+            
             "env_config": {
                 # "corridor_length": 5,
             },
