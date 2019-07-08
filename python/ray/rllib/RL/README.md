@@ -9,11 +9,6 @@ The codes in "Standup" folder can't be run within the folder. You may be able to
 	- NIPS workshop on Advances on Approximate Bayesian Inference, NIPS 2017, Long Beach, CA
 	- AAAI Spring Symposium Series, Data-Efficient Reinforcement Learning, Palo Alto, CA 
 
-* Standup Motion
-	- Efficient Learning of Stand-up Motion for Humanoid Robots with Bilateral Symmetry, IROS 2016, Daejeon, South Korea (http://ieeexplore.ieee.org/document/7759250/)
-	- Learning Complex Stand-Up Motion for Humanoid Robots, AAAI-16, Phoenix, AZ (https://www.aaai.org/ocs/index.php/AAAI/AAAI16/paper/download/12406/12224)
-
-
 Install OpenAI gym
 ```
 cd ~/ 
