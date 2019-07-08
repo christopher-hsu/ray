@@ -205,9 +205,7 @@ if __name__ == "__main__":
     # register_env("corridor", lambda config: SimpleCorridor(config))
     ray.init()
     ModelCatalog.register_custom_model("my_model", CustomModel)
-    register_env(
-        "TargetTrackingEnv0", lambda config: TwoStepGame(config).with_agent_groups(
-            grouping, obs_space=obs_space, act_space=act_space))
+
     tune.run(
         "DQN",
         stop={
