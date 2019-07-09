@@ -45,8 +45,8 @@ Drops you into the rllib directory.
 
 ### IMPORTANT steps
 ```
-$ cd RL/ && source setup
-$ cd gym/ && pip install -e '.[atari]'
+$ cd RL && source setup
+$ cd gym && pip install -e '.[atari]'
 $ cd ../
 ```
 
