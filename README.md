@@ -25,5 +25,5 @@ Drops you into the rllib directory.
 ```
 $ docker ps -a
 $ docker container stop RLlib
-$ docker container rm RLlib
+$ docker rm ...
 ```
