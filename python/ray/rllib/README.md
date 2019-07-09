@@ -33,7 +33,7 @@ If you've found RLlib useful for your research, you can cite the [paper](https:/
 ```
 ### To start image and container
 ```
-$./build-docker.sh
+$ ./build-docker.sh
 ```
 
 ### To use terminal
