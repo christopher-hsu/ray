@@ -43,6 +43,13 @@ $ docker exec -it RLlib bash
 
 Drops you into the rllib directory.
 
+### IMPORTANT steps
+```
+$ cd RL/ && source setup
+$ cd gym/ && pip install -e '.[atari]'
+$ cd ../
+```
+
 ### To close container
 ```
 $ docker ps -a
