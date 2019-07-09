@@ -20,6 +20,7 @@ from gym.spaces import Discrete, Box
 import ray
 from ray import tune
 from ray.tune import grid_search
+from ray.tune.registry import register_env
 
 from gym import spaces, logger
 from gym.utils import seeding
@@ -76,7 +77,7 @@ parser.add_argument('--scope',type=str, default='deepadfq')
 parser.add_argument('--ros', type=int, default=0)
 parser.add_argument('--ros_log', type=int, default=0)
 parser.add_argument('--map', type=str, default="empty")
-parser.add_argument('--nb_targets', type=int, default=1)
+parser.add_argument('--nb_targets', type=int, default=2)
 parser.add_argument('--im_size', type=int, default=50)
 
 args = parser.parse_args()
@@ -95,29 +96,36 @@ class CustomModel(Model):
                                            options)
         return self.fcnet.outputs, self.fcnet.last_layer
 
+def env_creator(env_config):
+    env = envs.make('TargetTracking-v0', 
+                # render = bool(args.render), 
+                # record = bool(args.record), 
+                # ros = bool(args.ros), 
+                # dirname=directory, 
+                map_name=env_config["map_name"],
+                num_targets=env_config["num_targets"],
+                # im_size=args.im_size,
+                )
+    return env  # return an env instance
 
+
+# register_env("my_env", env_creator)
+# trainer = ppo.PPOTrainer(env="my_env")
 if __name__ == "__main__":
     # Can also register the env creator function explicitly with:
     # register_env("corridor", lambda config: SimpleCorridor(config))
     ray.init()
+    
     ModelCatalog.register_custom_model("my_model", CustomModel)
+    register_env("TargetTracking", env_creator)
 
-    env = envs.make(args.env, 
-                    render = bool(args.render), 
-                    record = bool(args.record), 
-                    ros = bool(args.ros), 
-                    # dirname=directory, 
-                    map_name=args.map,
-                    num_targets=args.nb_targets,
-                    im_size=args.im_size,
-                    )
     tune.run(
         "DQN",
         stop={
             "timesteps_total": 10000,
         },
         config={
-            "env": env,  # or "corridor" if registered above
+            "env": "TargetTracking",  # or "corridor" if registered above
             "model": {
                 "custom_model": "my_model",
             },
@@ -126,6 +134,8 @@ if __name__ == "__main__":
             "timesteps_per_iteration": 1000,
             
             "env_config": {
+                "map_name": args.map,
+                "num_targets": args.nb_targets
                 # "corridor_length": 5,
             },
         },
