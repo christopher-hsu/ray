@@ -7,8 +7,8 @@ RUN conda install -y numpy
 RUN apt-get install -y zlib1g-dev
 # The following is needed to support TensorFlow 1.14
 RUN conda remove -y --force wrapt
-RUN pip install gym[atari] opencv-python-headless tensorflow lz4 keras pytest-timeout smart_open \
-		tabulate filterpy mpi4py
+RUN pip install opencv-python-headless tensorflow lz4 keras pytest-timeout smart_open \
+		tabulate filterpy #mpi4py
 RUN pip install -U h5py  # Mutes FutureWarnings
 RUN pip install --upgrade bayesian-optimization
 # RUN pip install --upgrade git+git://github.com/hyperopt/hyperopt.git
@@ -22,4 +22,6 @@ RUN pip install ray[rllib]
 RUN apt-get update && apt-get install -y python-pyglet python3-opengl zlib1g-dev libjpeg-dev patchelf \
         cmake swig libboost-all-dev libsdl2-dev libosmesa6-dev xvfb ffmpeg
 
+WORKDIR /opt/conda/lib/python3.6/site-packages/
+RUN rm -r gym
 WORKDIR /ray/python/ray/rllib
