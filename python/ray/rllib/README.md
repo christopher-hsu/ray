@@ -33,26 +33,26 @@ If you've found RLlib useful for your research, you can cite the [paper](https:/
 ```
 ### To start image and container
 ```
-$./build-docker.sh
+./build-docker.sh
 ```
 
 ### To use terminal
 ```
-$ docker exec -it RLlib bash
+docker exec -it RLlib bash
 ```
 
 Opens shell and drops you into the rllib directory.
 
 ### IMPORTANT steps
 ```
-$ cd RL && source setup
-$ cd gym && pip install -e '.[atari]'
-$ cd ../
+cd RL && source setup
+cd gym && pip install -e '.[atari]'
+cd ../
 ```
 
 ### To close container
 ```
-$ docker ps -a
-$ docker container stop RLlib
-$ docker container rm RLlib
+docker ps -a
+docker container stop RLlib
+docker container rm RLlib
 ```
