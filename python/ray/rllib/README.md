@@ -41,7 +41,7 @@ $./build-docker.sh
 $ docker exec -it RLlib bash
 ```
 
-Drops you into the rllib directory.
+Opens shell and drops you into the rllib directory.
 
 ### IMPORTANT steps
 ```
