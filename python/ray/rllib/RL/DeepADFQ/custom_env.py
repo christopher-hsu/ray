@@ -77,7 +77,7 @@ parser.add_argument('--scope',type=str, default='deepadfq')
 parser.add_argument('--ros', type=int, default=0)
 parser.add_argument('--ros_log', type=int, default=0)
 parser.add_argument('--map', type=str, default="empty")
-parser.add_argument('--nb_targets', type=int, default=2)
+parser.add_argument('--nb_targets', type=int, default=1)
 parser.add_argument('--im_size', type=int, default=50)
 
 args = parser.parse_args()

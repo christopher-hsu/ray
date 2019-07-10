@@ -10,7 +10,7 @@ posterior_adfq_v2
 """
 import numpy as np
 from scipy.stats import norm
-from scipy.misc import logsumexp
+from scipy.special import logsumexp
 
 import pdb
 from numba import jit

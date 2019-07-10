@@ -69,7 +69,7 @@ def train():
                     render = bool(args.render), 
                     record = bool(args.record), 
                     ros = bool(args.ros), 
-                    # dirname=directory, 
+                    dirname=directory, 
                     map_name=args.map,
                     num_targets=args.nb_targets,
                     im_size=args.im_size,
