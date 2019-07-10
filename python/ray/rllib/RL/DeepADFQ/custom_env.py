@@ -57,7 +57,7 @@ parser.add_argument('--learning_rate_decay_factor', type=float, default=0.99)
 parser.add_argument('--learning_rate_growth_factor', type=float, default=1.001)
 parser.add_argument('--gamma', type=float, default=.99)
 parser.add_argument('--hiddens', type=str, default='128:128:128')
-parser.add_argument('--log_dir', type=str, default='/TrainDirectories/')
+parser.add_argument('--log_dir', type=str, default='.')
 parser.add_argument('--log_fname', type=str, default='model.pkl')
 parser.add_argument('--eps_fraction', type=float, default=0.1)
 parser.add_argument('--eps_min', type=float, default=.02)
@@ -103,7 +103,7 @@ def env_creator(env_config):
                 # ros = bool(args.ros), 
                 # dirname=directory, 
                 map_name=env_config["map_name"],
-                num_targets=env_config["num_targets"],
+                # num_targets=env_config["num_targets"],
                 # im_size=args.im_size,
                 )
     return env  # return an env instance
@@ -125,17 +125,19 @@ if __name__ == "__main__":
             "timesteps_total": 10000,
         },
         config={
+            "double_q": True,
             "env": "TargetTracking",  # or "corridor" if registered above
             "model": {
                 "custom_model": "my_model",
             },
             "lr": grid_search([1e-2, 1e-3, 1e-4]),  # try different lrs
             "num_workers": 1,  # parallelism
+            "num_gpus": 1,
             "timesteps_per_iteration": 1000,
             
             "env_config": {
                 "map_name": args.map,
-                "num_targets": args.nb_targets
+                # "num_targets": args.nb_targets
                 # "corridor_length": 5,
             },
         },
