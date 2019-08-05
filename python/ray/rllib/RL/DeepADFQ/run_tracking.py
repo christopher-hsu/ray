@@ -164,11 +164,9 @@ def test():
         t += 1
         obs, done = env.reset(), False
         episode_rew = 0
-        env.render()
         while not done:
             if args.render:
                 env.render()
-                # pdb.set_trace()
             if args.ros_log:
                 log.log(env)
             obs, rew, done, _ = env.step(act(obs[None])[0])
